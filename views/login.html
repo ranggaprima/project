@@ -1,0 +1,39 @@
+<md-content>
+    <md-toolbar>
+        <div layout-align="center center" layout="row" class="md-toolbar-tools">
+        </div>
+    </md-toolbar>
+    <div layout="row" layout-align="center stretch" style="margin-top: 100px">
+        <md-card flex="20" flex-gt-sm="20" flex-gt-md="20">
+            <md-card-title>
+                <md-card-title-text layout-align="center center">
+                    <span class="md-headline uk-text-center">LOGIN</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-content>
+                <form name="form_login" layout-padding>
+                	<span class="error-msg">{{error.errorlogin}}</span>
+                    <md-input-container required class="md-block" flex>
+                        <label>Username</label>
+                        <input type="text" ng-model="username" flex>
+                        <span ng-if="error.username" class="error-msg">{{ error.msg }}</span>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input type="password" ng-model="password">
+                        <span ng-if="error.password" class="error-msg">{{ error.msg }}</span>
+                    </md-input-container>
+                    <div layout-align="center center" layout="row">
+                        <md-button type="submit" aria-label="Login Page" class="md-raised md-primary" data-ng-click="submit()">Login</md-button>
+                        <md-button aria-label="Reset" ng-click="reset()">Reset</md-button>
+                    </div>
+                    <md-divider></md-divider>
+                    <span>Don't have an account yet?</span>
+				    <div layout="row" layout-align="end right">
+				        <md-button ng-click="gotoregister()">Register</md-button>
+				    </div>
+                </form>
+            </md-content>
+        </md-card>
+    </div>
+</md-content>

@@ -1,0 +1,120 @@
+<md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">
+        <h2 class="uk-text-contrast">Wellcome, {{ username }}</h2>
+        <span flex></span>
+    </div>
+</md-toolbar>
+
+<div layout="column">
+    <form name="profilingform">
+        <md-content class="md-no-momentum" layout-padding>
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.name" type="text" placeholder="Name">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.sex" type="text" placeholder="Sex">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.religion" type="text" placeholder="Religion">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <md-datepicker ng-model="profile.birthdate" md-placeholder="Birthdate"></md-datepicker>
+                </md-input-container>
+			</div>
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                	<label>Address</label>
+                    <textarea ng-model="profile.address" md-maxlength="300" rows="3"></textarea>
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                	<label>About</label>
+                    <textarea ng-model="profile.about" md-maxlength="300" rows="3"></textarea>
+                </md-input-container>
+			</div>
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.hobby" placeholder="Hobby">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.workplace" type="text" placeholder="Work Place">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.workstatus" type="text" placeholder="Work Status">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.nationality" type="text" placeholder="Nationality">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.language" type="text" placeholder="Language">
+                </md-input-container>
+			</div>
+            <div layout="row">
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.email" type="text" placeholder="Email">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.phone" type="text" placeholder="Phone">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.linkedin" type="text" placeholder="Linked In">
+                </md-input-container>
+                <md-input-container class="md-block" flex>
+                    <input ng-model="profile.gplus" type="text" placeholder="Google+">
+                </md-input-container>
+			</div>
+            <div layout="row" layout-align="end right">
+                <md-button class="md-raised md-primary" ng-click="saveprofile(profile)">SAVE</md-button>
+            </div>
+        </md-content>
+    </form>
+</div>
+
+<div layout="column" ng-if="scorefrom">
+	<h3><b>--- Saving and Loan ---</b></h3>
+	<span ng-if="error.save" class="error-msg">{{ error.msg }}</span>
+	<span ng-if="successsave" class="success-msg">{{ successmsg }}</span>
+    <form name="scoringform">
+        <md-content class="md-no-momentum" layout-padding>
+            <div layout="row">
+				<md-input-container class="md-block" flex>
+					<label>How much your saving amount ?</label>
+					<md-select ng-model="score.saving" md-on-close="clearSearch()" data-md-container-class="SelectHeader">
+					    <div class="select-header-wrap">
+					        <md-select-header class="select-header">
+					            <input ng-model="saving"
+					            ng-keydown="$event.stopPropagation()"
+					            ng-keyup="selectKeyup()"
+					            type="search"
+					            placeholder="Search"
+					            class="header-searchbox md-text" force-select-focus>
+					        </md-select-header>
+					    </div>
+					    <md-option ng-value="">Select</md-option>
+					    <md-option ng-value="score.value" ng-repeat="score in scoring | filter:saving">{{ score.label }}</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container class="md-block" flex>
+					<label>How much your loan amount ?</label>
+					<md-select ng-model="score.loan" md-on-close="clearSearch()" data-md-container-class="SelectHeader">
+					    <div class="select-header-wrap">
+					        <md-select-header class="select-header">
+					            <input ng-model="loan"
+					            ng-keydown="$event.stopPropagation()"
+					            ng-keyup="selectKeyup()"
+					            type="search"
+					            placeholder="Search"
+					            class="header-searchbox md-text" force-select-focus>
+					        </md-select-header>
+					    </div>
+					    <md-option ng-value="">Select</md-option>
+					    <md-option ng-value="score.value" ng-repeat="score in scoring | filter:loan">{{ score.label }}</md-option>
+					</md-select>
+				</md-input-container>
+            </div>
+            <div layout="row" layout-align="end right">
+                <md-button class="md-raised md-primary" ng-click="savescore(score)">Submit</md-button>
+            </div>
+        </md-content>
+    </form>
+</div>
