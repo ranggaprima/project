@@ -1,5 +1,5 @@
 1. Install Nodejs
 2. Run: npm install
-3. Restore database: deploy.sql
+3. Restore database: db.sql
 4. Edit database config on file .env
 5. Command run app : node service.js( inside root folder )
